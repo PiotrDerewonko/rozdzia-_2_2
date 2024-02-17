@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from posts.models import Post, Author
-
+from posts.forms import PostForm, AuthorForm
 
 # Create your views here.
 def post_list(request):
@@ -21,11 +21,21 @@ def post_detail(request, id):
     )
 
 def authors_list(request):
+    if request.method == 'POST':
+        nick = request.POST['nick'] or None
+        email = request.POST['mail'] or None
+        bio = request.POST['bio'] or None
+        Author.objects.get_or_create(
+            nick=nick,
+            bio=bio,
+            email=email
+        )
     authors = Author.objects.all()
+    form = AuthorForm
     return render(
         request=request,
         template_name="posts/author_list.html",
-        context={'authors': authors, 'title': 'Lista postów', 'active_tab': 'authors_list'}
+        context={'authors': authors, 'title': 'Lista postów', 'active_tab': 'authors_list', 'form': form}
     )
 
 def author_detail(request, id):

@@ -13,13 +13,13 @@
         <ul>
             <li><a {% if active_tab == 'post_list' %} class='active' {% endif %} href="{% url 'posts:lista_postow' %}">Lista
                 postów</a></li>
-            <li><a {% if active_tab == 'add_post' %} class='active' {% endif %} href="{% url 'posts:lista_postow' %}">Dodaj nowy
+            <li><a {% if active_tab == 'add_post' %} class='active' {% endif %} href="{% url 'posts:lista_postow' %}">Dodaj
+                nowy
                 post</a>
             </li>
-            <li><a {% if active_tab == 'authors_list' %} class='active' {% endif %} href="{% url 'posts:lista_autorow' %}">Lista
+            <li><a {% if active_tab == 'authors_list' %} class='active' {% endif %}
+                                                         href="{% url 'posts:lista_autorow' %}">Lista
                 autorów</a></li>
-            <li><a {% if active_tab == 'me' %} class='active' {% endif %} href="{% url 'posts:lista_postow' %}">Dodaj nowego
-                autora</a></li>
         </ul>
     </nav>
 

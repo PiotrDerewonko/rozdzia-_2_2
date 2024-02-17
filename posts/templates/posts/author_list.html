@@ -1,8 +1,14 @@
 {% extends 'posts/main.html' %}
 {% block content %}
-<ul>
-    {% for a in authors %}
-<li><a href="{% url "posts:autor" a.id %}">{{ a }}</a></li>
-{% endfor %}
-</ul>
+    <ul>
+        {% for a in authors %}
+            <li><a href="{% url "posts:autor" a.id %}">{{ a }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Dodaj nowego autora:</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
 {% endblock %}
