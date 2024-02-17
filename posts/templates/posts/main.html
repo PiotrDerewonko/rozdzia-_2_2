@@ -13,7 +13,7 @@
         <ul>
             <li><a {% if active_tab == 'post_list' %} class='active' {% endif %} href="{% url 'posts:lista_postow' %}">Lista
                 postów</a></li>
-            <li><a {% if active_tab == 'add_post' %} class='active' {% endif %} href="{% url 'posts:lista_postow' %}">Dodaj
+            <li><a {% if active_tab == 'post_add' %} class='active' {% endif %} href="{% url 'posts:post_add' %}">Dodaj
                 nowy
                 post</a>
             </li>

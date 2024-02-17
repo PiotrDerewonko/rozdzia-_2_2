@@ -1,7 +1,9 @@
 from django import forms
-
+from posts.models import Author
 class PostForm(forms.Form):
-    pass
+    title = forms.CharField(max_length=50, required=True)
+    content = forms.CharField(max_length=9999, required=True)
+    author = forms.ModelChoiceField(queryset=Author.objects.all())
 
 
 class AuthorForm(forms.Form):
