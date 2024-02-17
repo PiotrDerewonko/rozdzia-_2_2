@@ -5,6 +5,12 @@ class PostForm(forms.Form):
     content = forms.CharField(max_length=9999, required=True)
     author = forms.ModelChoiceField(queryset=Author.objects.all())
 
+    def clean(self):
+        cleaned_data = super().clean()
+        title = cleaned_data.get('title')
+        content = cleaned_data.get('content')
+        author = cleaned_data.get('author')
+
 
 class AuthorForm(forms.Form):
     nick = forms.CharField(max_length=50, required=True)
