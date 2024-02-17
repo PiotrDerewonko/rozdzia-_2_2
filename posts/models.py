@@ -6,7 +6,10 @@ class Author(models.Model):
     email = models.EmailField()
     bio = models.TextField(null=True)
 
-class post(models.Model):
+    def __str__(self):
+        return f"Nick: {self.nick}, Życiorys: {self.bio}"
+
+class Post(models.Model):
     title = models.CharField(max_length=50)
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -15,5 +18,8 @@ class post(models.Model):
         'posts.Author',
         on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return f"Tytuł: {self.title}, opis: {self.content}, autor: {self.author}"
 
 

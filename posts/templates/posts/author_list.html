@@ -1,0 +1,8 @@
+{% extends 'posts/main.html' %}
+{% block content %}
+<ul>
+    {% for a in authors %}
+<li><a href="{% url "posts:autor" a.id %}">{{ a }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
