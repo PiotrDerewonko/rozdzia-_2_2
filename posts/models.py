@@ -20,6 +20,6 @@ class Post(models.Model):
     )
 
     def __str__(self):
-        return f"Tytuł: {self.title}, opis: {self.content}, autor: {self.author}"
+        return f"Tytuł: {self.title}, opis: {self.content}, autor: {self.author.nick}"
 
 

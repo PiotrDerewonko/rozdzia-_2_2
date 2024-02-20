@@ -1,0 +1,47 @@
+[
+{
+    "model": "posts.author",
+    "pk": 1,
+    "fields": {
+        "nick": "Jan",
+        "email": "test@com.pl",
+        "bio": null
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 2,
+    "fields": {
+        "nick": "Test2",
+        "email": "test2@com.pl",
+        "bio": "test_bio"
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 3,
+    "fields": {
+        "nick": "fsdfsdfsd",
+        "email": "dasdsa@com.pl",
+        "bio": null
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 4,
+    "fields": {
+        "nick": "Test4 zmiana na fixturach",
+        "email": "test4@test4",
+        "bio": "test4_bio"
+    }
+},
+{
+    "model": "posts.author",
+    "pk": 5,
+    "fields": {
+        "nick": "fsdfsdf",
+        "email": "fssdff@com",
+        "bio": "fffffffffff"
+    }
+}
+]
