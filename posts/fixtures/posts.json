@@ -190,7 +190,7 @@
     "model": "posts.post",
     "pk": 18,
     "fields": {
-        "title": "fsdfsdfdsf",
+        "title": "zmiana fikstur",
         "content": "fsdfsdfdsf",
         "created": "2024-02-17T17:55:02.564Z",
         "modified": "2024-02-17T17:55:02.564Z",
