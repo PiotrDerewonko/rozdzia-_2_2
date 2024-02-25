@@ -1,0 +1,31 @@
+{% extends "main.html" %}
+
+{% block title %}Posty{% endblock %}
+
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+   <div class="row">
+       <div class="col-6">
+           <table class="table">
+           <tr>
+               <th>Tytuł</th>
+               <th>Autor</th>
+               <th>Data</th>
+           </tr>
+               {% for p in post_list %}
+                   <tr>
+                       <td><a href="{% url "posts:post" p.id %}">{{ p.title }}</a></td>
+                       <td>{{ p.author.nick }}</td>
+                       <td>{{ p.created }}</td>
+                   </tr>
+               {% endfor %}
+           </table>
+       </div>
+       <div class="col-6">
+       </div>
+   </div>
+
+{% endblock %}

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'posts',
     'bootstrap4',
     'infos',
+    'books'
 ]
 
 MIDDLEWARE = [

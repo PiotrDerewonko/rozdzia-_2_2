@@ -1,11 +1,12 @@
 
 from django.urls import path
-from.views import home, about_me, contact
+from django.views.generic import TemplateView
+from.views import home
 
 app_name = 'infos'
 
 urlpatterns = [
     path('', home, name='home'),
-    path('me', about_me, name='me'),
-    path('contact', contact, name='contact'),
+    path('me', TemplateView.as_view(template_name='infos/about_me.html'), name='me'),
+    path('contact', TemplateView.as_view(template_name='infos/contact.html'), name='contact'),
 ]
