@@ -1,6 +1,6 @@
 {% extends "main.html" %}
 
-{% block title %}Posty{% endblock %}
+{% block title %}Lista książek{% endblock %}
 
 {% load bootstrap4 %}
 
@@ -13,13 +13,13 @@
            <tr>
                <th>Tytuł</th>
                <th>Autor</th>
-               <th>Data</th>
+               <th>Czy dostępna</th>
            </tr>
                {% for p in book_list %}
                    <tr>
                        <td><a href="{% url "posts:post" p.id %}">{{ p.title }}</a></td>
                        <td>{{ p.author.nick }}</td>
-{#                       <td>{{ p.created }}</td>#}
+                       <td>{{ p.created }}</td>
                    </tr>
                {% endfor %}
            </table>
