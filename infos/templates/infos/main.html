@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+
+    {%  block content %}
+    Strona poświęcona mojej osobie. Ponizej linki do podstron<br>
+    <a href="{% url 'contact' %}">Formularz kontaktowy</a>
+    <br>
+    <a href="{% url 'me' %}">Troche o mnie</a>
+    {%  endblock %}
+

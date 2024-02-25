@@ -7,10 +7,11 @@ class PostForm(forms.ModelForm):
         title = cleaned_data.get('title')
         content = cleaned_data.get('content')
         author = cleaned_data.get('author')
+        image = cleaned_data.get('image')
 
     class Meta:
         model = Post
-        fields = ['title', 'content', 'author']
+        fields = ['title', 'content', 'author', "image", 'tags']
 
 
 class AuthorForm(forms.ModelForm):

@@ -1,15 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from posts.models import Post, Author
 from posts.forms import PostForm, AuthorForm
 from datetime import datetime
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
+# Create your views her
+@login_required
 def post_list(request):
     posts = Post.objects.all()
+    paginator = Paginator(posts, 5)
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
     return render(
         request=request,
-        template_name="posts/main.html",
+        template_name="main.html",
         context={'posts': posts, 'title': 'Lista postów', 'active_tab': 'post_list'},
     )
 
@@ -27,24 +34,30 @@ def post_detail(request, id):
 
 def post_add(request):
     if request.method == "POST":
-        title = request.POST['title'] or None
-        content = request.POST['title'] or None
-        author = int(request.POST['author'])
-        Post.objects.get_or_create(
-            title=title,
-            content=content,
-            author_id=author,
-            created=datetime.now(),
-            modified=datetime.now()
-        )
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
         messages.add_message(request,
                              messages.SUCCESS,
                              "Utworzony nowy post")
 
-    form = PostForm
+    form = PostForm()
     return render(request=request,
                   template_name="posts/post_add.html",
                   context={'form': form, 'title': 'Dodawanie nowego postu', 'active_tab': 'post_add'})
+
+
+def edit_post(request, id):
+    post = Post.objects.get(id=id)
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('posts:post', id)
+    form = PostForm(instance=post)
+    return render(request=request,
+                  template_name="posts/post_edit.html",
+                  context={'form': form, 'title': 'Edycja postu', 'active_tab': 'post_add'})
 
 
 def authors_list(request):

@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    Moje dane kontaktowe<br>
+    telefon 123 456 789<br>
+    mail <a href="mailto:test@test.pl">test@test.pl</a><br>
+
+    <h2>Formularz kontaktowy</h2>
+
+    <form>
+        <label for="name">Imię:</label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="message">Wiadomość:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br>
+
+        <input type="submit" value="Wyślij">
+    </form>
+{% endblock %}

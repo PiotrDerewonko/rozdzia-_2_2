@@ -9,11 +9,13 @@
             {% endfor %}
         </ul>
     {% endif %}
-
-    <h2>Dodawanie nowego postu</h2>
+    {% if perms.posts.add_post %}
+    <h2>Edycja postu</h2>
     <form method="post" enctype='multipart/form-data'>
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
     </form>
+    {% else %}
+{% endif %}
 {% endblock %}
