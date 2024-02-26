@@ -11,13 +11,11 @@
        <div class="col-6">
            <table class="table">
            <tr>
-               <th>Tytuł</th>
                <th>Autor</th>
            </tr>
-               {% for b in book_list %}
+               {% for a in author_list %}
                    <tr>
-                       <td><a href="{% url "posts:post" b.id %}">{{ b.title }}</a></td>
-                       <td>{{ b.author.nick }}</td>
+                       <td><a href="{% url "posts:post" a.id %}">{{ a.nick }}</a></td>
                    </tr>
                {% endfor %}
            </table>

@@ -6,6 +6,7 @@ class Book(models.Model):
     author = models.ForeignKey('books.Author', on_delete=models.CASCADE)
     description = models.CharField(max_length=1000, blank=True, null=True)
     tags = models.ManyToManyField('books.Tag')
+    cover = models.ImageField(upload_to='cover/%Y/%m/%d', blank=True, null=True)
 
     def __str__(self):
         return f'''Tytuł: {self.title}, Autor: {self.author}'''
