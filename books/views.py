@@ -4,7 +4,8 @@ from .models import Book, Borrow, Author
 from django.views import View
 from .forms import BorrowForm
 from django.utils.timezone import now
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 class AuthorDetailView(DetailView):
     model = Author
     template_name = 'author_detail.html'
@@ -45,6 +46,8 @@ class BookDetailView(View):
         form.save()
         return render(request, 'book_detail.html', {'book': book, 'form': form})
 
+
+@method_decorator(login_required, name='dispatch')
 class UserBorrowList(ListView):
     model = Borrow
     template_name = 'user_borrow_list.html'
