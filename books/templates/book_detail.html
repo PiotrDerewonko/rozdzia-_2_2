@@ -1,0 +1,57 @@
+{% extends "main.html" %}
+
+{% block title %}Lista książek{% endblock %}
+
+{% load bootstrap4 %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <tr>
+                    <th>Imie i nazwisko autora</th>
+
+                </tr>
+                <tr>
+                    <th>{{ book.title }}</th>
+                </tr>
+                <tr>
+                    <th>Opis</th>
+
+                </tr>
+                <tr>
+                    <th>{{ book.description }}</th>
+                </tr>
+                <tr>
+                    <th>Autor</th>
+                </tr>
+                <tr>
+                    <th><a href="{% url 'books:author_detail' book.id %}">{{ book.author }}</a></th>
+                </tr>
+                <tr>
+                    <th>
+                        {% if perms.borrow.add_post %}
+                            {% if is_borrow == False %}
+                                <form method="post" enctype='multipart/form-data'>
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit">Zarezerwuj książkę</button>
+                                </form>
+                            {% else %}
+                                Ksiażka wypożyczona {{ b }}
+                            {% endif %}
+                        {% else %}
+                            zaloguj sie aby wypożyczać książki
+                        {% endif %}
+                    </th>
+
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <br>
+
+
+{% endblock %}

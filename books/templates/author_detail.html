@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+
+{% block title %}Lista książek{% endblock %}
+
+{% load bootstrap4 %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <tr>
+                    <th>Imie i nazwisko autora</th>
+
+                </tr>
+                <tr>
+                    <th>{{ author.nick }}</th>
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-6">
+            <table class="table">
+                <tr>
+                    <th>Lista książek autora</th>
+                </tr>
+                {% for b in books %}
+                    <tr>
+                        <td><a href="{% url "posts:post" b.id %}">{{ b.title }}</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+
+{% endblock %}

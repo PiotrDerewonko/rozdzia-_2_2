@@ -11,13 +11,21 @@
         <div class="col-6">
             <table class="table">
                 <tr>
-                    <th>Autor</th>
+                    <th>Wypożyczone książki</th>
                 </tr>
-                {% for a in author_list %}
+
+                {% for i in borrow_list %}
                     <tr>
-                        <td><a href="{% url "books:author_detail" a.id %}">{{ a.nick }}</a></td>
+                        <td><a href="{% url "books:book_detail" i.book_id %}">{{ i.book.title }},
+                            wypożyczona: {{ i.borrowing_date }}</a>
+                            <form method="POST" class="float-right">{% csrf_token %}
+                                <input type="hidden" name="borrow_id" value="{{ i.id }}">
+                                <button class="btn btn-success">Return</button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
+
             </table>
         </div>
         <div class="col-6">

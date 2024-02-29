@@ -28,6 +28,11 @@
                                                href="{% url 'infos:me' %}">O mnie</a></li>
             <li><a {% if active_tab == 'contact' %} class='active' {% endif %}
                                                     href="{% url 'infos:contact' %}">Kontakt</a></li>
+            <li><a {% if active_tab == 'book_list' %} class='active' {% endif %}
+                                                      href="{% url 'books:book_list' %}">Lista kiążek</a></li>
+            <li><a {% if active_tab == 'author_list' %} class='active' {% endif %}
+                                                        href="{% url 'books:author_list' %}">Lista Autorów książek</a>
+            </li>
             <li>{% if user.is_authenticated %}
                 <p class="nav-link">
                     {{ user.username }} | <a href="{% url 'logout' %}">logout</a>
@@ -48,7 +53,8 @@
 {% block content %}
     <ul>
         {% for p in posts %}
-            <li><a href="{% url "posts:post" p.id %}">{{ p }}</a> <u><b><a href="{% url "posts:edit_post" p.id %}">Edytuj</a></b></u> </li>
+            <li><a href="{% url "posts:post" p.id %}">{{ p }}</a> <u><b><a href="{% url "posts:edit_post" p.id %}">Edytuj</a></b></u>
+            </li>
         {% endfor %}
     </ul>
     <div class="pagination">
