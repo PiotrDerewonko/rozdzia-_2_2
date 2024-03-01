@@ -1,0 +1,6 @@
+GET www.wpl.pl
+
+###
+GET http://api.nbp.pl/api/exchangerates/tables/C HTTP/1.1
+Host: api.nbp.pl
+Content-Type: application/json

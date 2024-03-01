@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dynamic_breadcrumbs',
     'posts',
-    'bootstrap4',
+    'bootstrap5',
     'infos',
     'books',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
